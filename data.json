@@ -1,0 +1,38 @@
+{
+  "brands": [
+    {
+      "id": "needforslots",
+      "name": "NeedforSlots",
+      "website": "http://needforslots.com/",
+      "review": "reviews/needforslots.html",
+      "logo": "assets/needforslots.png",
+      "badge": "Editor\u2019s Choice",
+      "bonus": "Up to \u20ac1,500 + 250 Free Spins",
+      "description": "Slots-focused promotions and regular campaigns.",
+      "allowed_geos": [
+        "IT",
+        "ES",
+        "DE",
+        "BE",
+        "GR",
+        "HU",
+        "AU",
+        "CZ",
+        "SI",
+        "AT",
+        "SK",
+        "PT",
+        "IE",
+        "CA",
+        "CH",
+        "PL",
+        "DK",
+        "HR",
+        "NO",
+        "RO",
+        "AL",
+        "FI"
+      ]
+    }
+  ]
+}
