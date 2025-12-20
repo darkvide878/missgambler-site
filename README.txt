@@ -1,26 +1,19 @@
-MissGambler full pack (GitHub -> Netlify)
+MISS GAMBLER — SITE PACK (GEO FILTER + CHIPS FX)
 
-Upload/commit this structure to your GitHub repo:
-- index.html
-- data.json
-- assets/missgambler.png
-- assets/favicon.ico
-- assets/apple-touch-icon.png
-- assets/needforslots.png
-- reviews/needforslots.html
-- responsible-gambling.html
-- disclosure.html
+How GEO filtering works
+- Data is in data.json
+- Each brand has allowed_geos: ["IT","ES",...]
+- The page shows only brands allowed for the selected country.
+- Country selection:
+  - Manual: user picks from dropdown (no cookies required)
+  - Auto: only if user clicks "Allow" in cookie banner; then we use ipapi.co to detect country.
 
-Check after deploy:
-- / (logo in header + 18+ popup first visit)
-- /data.json (only NeedforSlots)
-- /assets/missgambler.png
-- /assets/favicon.ico
-- /reviews/needforslots.html
+How to add a new brand
+- Add a new object to data.json -> brands[]
+- Set allowed_geos to list of two-letter country codes.
 
+Chips Rain Effect
+- Clicking "Play Now", "Read Review", or anywhere on the page spawns casino chips rain.
 
-=== Supabase Login (Optional) ===
-This pack includes optional Signup/Login using Supabase.
-If Signup/Login do nothing, check in Supabase:
-- Authentication > Sign In / Providers: Email enabled
-- Authentication > URL Configuration: Site URL and Redirect URLs include https://missgambler.com
+Contact
+- Footer contact is Telegram: @DavideCorleone

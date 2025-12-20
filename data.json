@@ -1,31 +1,38 @@
 {
-  "casinos": [
+  "brands": [
     {
-      "id": 1,
+      "id": "needforslots",
       "name": "NeedforSlots",
-      "bonus": "Up to €1,500 + 250 Free Spins",
-      "sub": "Slots-focused promos and regular campaigns. Check terms on the casino site.",
-      "license": "Curacao",
-      "payments": [
-        "Visa",
-        "Mastercard",
-        "Crypto"
-      ],
-      "tags": [
-        "Big bonus",
-        "Fast payouts"
-      ],
-      "geoAvailable": [
+      "website": "http://needforslots.com/",
+      "review": "reviews/needforslots.html",
+      "logo": "assets/needforslots.png",
+      "badge": "Editor\u2019s Choice",
+      "bonus": "Up to \u20ac1,500 + 250 Free Spins",
+      "description": "Slots-focused promotions and regular campaigns.",
+      "allowed_geos": [
         "IT",
-        "DE"
-      ],
-      "rating": 4.8,
-      "popular": 99,
-      "latest": "2025-12-14",
-      "badge": "Editor’s Choice",
-      "logoUrl": "assets/needforslots.png",
-      "playUrl": "http://needforslots.com/",
-      "reviewUrl": "reviews/needforslots.html"
+        "ES",
+        "DE",
+        "BE",
+        "GR",
+        "HU",
+        "AU",
+        "CZ",
+        "SI",
+        "AT",
+        "SK",
+        "PT",
+        "IE",
+        "CA",
+        "CH",
+        "PL",
+        "DK",
+        "HR",
+        "NO",
+        "RO",
+        "AL",
+        "FI"
+      ]
     }
   ]
 }
