@@ -1,6 +1,10 @@
 
-body { background:#0b0f1a; color:#fff; font-family:sans-serif }
-.logo { width:160px }
-.casino-card { cursor:pointer }
-.modal { position:fixed; top:20%; left:40%; background:#111; padding:20px }
-.hidden { display:none }
+body{margin:0;font-family:Arial;background:#0b1020;color:#fff}
+header{display:flex;justify-content:space-between;align-items:center;padding:15px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{width:60px}
+button{padding:6px 12px;cursor:pointer}
+.casino{margin:40px;cursor:pointer}
+.casino img{width:160px}
+.modal{position:fixed;top:30%;left:50%;transform:translateX(-50%);background:#111;padding:20px}
+.hidden{display:none}

@@ -4,38 +4,33 @@ const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-const modal = document.getElementById("authModal");
-document.getElementById("loginBtn").onclick = ()=> modal.classList.remove("hidden");
-document.getElementById("signupBtn").onclick = ()=> modal.classList.remove("hidden");
+const modal=document.getElementById("authModal");
+loginBtn.onclick=()=>modal.classList.remove("hidden");
+signupBtn.onclick=()=>modal.classList.remove("hidden");
 
-document.getElementById("doLogin").onclick = async () => {
-  const email = email.value;
-  const password = password.value;
-  const { error } = await supabase.auth.signInWithPassword({ email, password });
-  alert(error ? error.message : "Logged in");
+doLogin.onclick=async()=>{
+ const {error}=await supabase.auth.signInWithPassword({email:email.value,password:password.value});
+ alert(error?error.message:"Logged in");
 };
 
-document.getElementById("doSignup").onclick = async () => {
-  const email = email.value;
-  const password = password.value;
-  const { error } = await supabase.auth.signUp({ email, password });
-  alert(error ? error.message : "Check your email to confirm");
+doSignup.onclick=async()=>{
+ const {error}=await supabase.auth.signUp({email:email.value,password:password.value});
+ alert(error?error.message:"Check email to confirm");
 };
 
-// Chips rain
 document.querySelectorAll(".js-chip").forEach(el=>{
-  el.addEventListener("click", ()=>{
-    for(let i=0;i<6;i++){
-      const c=document.createElement("img");
-      c.src="assets/chips.png";
-      c.style.position="fixed";
-      c.style.left=Math.random()*window.innerWidth+"px";
-      c.style.top="-40px";
-      c.style.width="40px";
-      c.style.transition="top 2.5s linear";
-      document.body.appendChild(c);
-      setTimeout(()=>c.style.top="100%",50);
-      setTimeout(()=>c.remove(),3000);
-    }
-  })
-})
+ el.onclick=()=>{
+  for(let i=0;i<6;i++){
+   const c=document.createElement("img");
+   c.src="assets/chips.png";
+   c.style.position="fixed";
+   c.style.left=Math.random()*innerWidth+"px";
+   c.style.top="-60px";
+   c.style.width="40px";
+   c.style.transition="top 3s linear";
+   document.body.appendChild(c);
+   setTimeout(()=>c.style.top="110%",50);
+   setTimeout(()=>c.remove(),3500);
+  }
+ };
+});
