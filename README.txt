@@ -17,3 +17,10 @@ Check after deploy:
 - /assets/missgambler.png
 - /assets/favicon.ico
 - /reviews/needforslots.html
+
+
+=== Supabase Login (Optional) ===
+This pack includes optional Signup/Login using Supabase.
+If Signup/Login do nothing, check in Supabase:
+- Authentication > Sign In / Providers: Email enabled
+- Authentication > URL Configuration: Site URL and Redirect URLs include https://missgambler.com
