@@ -249,20 +249,29 @@
     /* Chips rain fx */
     .chip{
       position:fixed;
-      width:18px;height:18px;border-radius:999px;
-      border:2px solid rgba(255,255,255,.55);
-      background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.8), rgba(255,255,255,.12));
-      box-shadow:0 10px 18px rgba(0,0,0,.35);
+      width:28px;height:28px;border-radius:999px;
       pointer-events:none;
       z-index:9997;
       transform:translate(-50%,-50%);
       will-change:transform, opacity;
+      box-shadow:0 12px 22px rgba(0,0,0,.40);
+      border:2px solid rgba(255,255,255,.25);
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.65), rgba(255,255,255,0) 40%),
+        conic-gradient(from 0deg, rgba(255,255,255,.22) 0 10%, rgba(0,0,0,0) 10% 20%, rgba(255,255,255,.22) 20% 30%, rgba(0,0,0,0) 30% 40%, rgba(255,255,255,.22) 40% 50%, rgba(0,0,0,0) 50% 60%, rgba(255,255,255,.22) 60% 70%, rgba(0,0,0,0) 70% 80%, rgba(255,255,255,.22) 80% 90%, rgba(0,0,0,0) 90% 100%),
+        radial-gradient(circle at 50% 55%, rgba(0,0,0,.45), rgba(0,0,0,.85));
+    }
+    .chip:before{
+      content:"";
+      position:absolute;inset:7px;border-radius:999px;
+      border:2px solid rgba(255,255,255,.22);
+      background:radial-gradient(circle at 40% 35%, rgba(255,255,255,.18), rgba(0,0,0,0) 55%);
     }
     .chip:after{
       content:"";
-      position:absolute;inset:4px;
-      border-radius:999px;
-      border:2px dashed rgba(255,255,255,.35);
+      position:absolute;inset:11px;border-radius:999px;
+      background:rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.15);
     }
 
     @media (max-width: 860px){
@@ -272,6 +281,7 @@
       .footerGrid{grid-template-columns:1fr}
     }
   </style>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -314,6 +324,12 @@
       <a href="responsible-gambling.html">Responsible</a>
       <a href="privacy.html">Privacy</a>
       <a href="disclosure.html">Disclosure</a>
+    
+      <span id="authBtns" style="display:inline-flex;gap:8px;align-items:center;margin-left:4px">
+        <a href="#" id="btnOpenSignup" class="pill" style="padding:8px 10px">Sign up</a>
+        <a href="#" id="btnOpenLogin" class="pill" style="padding:8px 10px">Login</a>
+        <a href="#" id="btnDoLogout" class="pill" style="padding:8px 10px;display:none">Logout</a>
+      </span>
     </nav>
   </header>
 
@@ -370,7 +386,8 @@
           <a href="disclosure.html">Affiliate Disclosure</a>
         </div>
         <div style="margin-top:10px" class="fText">
-          Contact / collaborations: <b>@DavideCorleone</b> (Telegram)
+          Contact / collaborations: <a href="https://t.me/DavideCorleone" target="_blank" rel="noopener" style="text-decoration:underline"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="display:inline-block;vertical-align:-3px;margin-right:6px;opacity:.9">
+<path fill="currentColor" d="M9.4 15.7l-.4 5.1c.6 0 .9-.3 1.2-.6l2.9-2.8 6.1 4.5c1.1.6 1.9.3 2.2-1.1l3.9-18.4c.4-1.8-.6-2.5-1.7-2.1L1.7 9.2c-1.7.7-1.7 1.7-.3 2.1l5.7 1.8L20.4 5.3c.8-.5 1.5-.2 1 .3L9.4 15.7z"/></svg><b>@DavideCorleone</b></a>
         </div>
       </div>
 
@@ -390,6 +407,34 @@
       <div><a href="#" id="cookiePrefs" style="color:rgba(255,255,255,.55);text-decoration:underline">Cookie preferences</a></div>
     </div>
   </footer>
+</div>
+
+
+<!-- Auth Modal (optional) -->
+<div id="authModal" style="position:fixed;inset:0;background:rgba(0,0,0,.70);display:none;align-items:center;justify-content:center;z-index:9996">
+  <div style="width:min(480px,calc(100% - 28px));background:#0b1025;border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:16px;box-shadow:0 12px 30px rgba(0,0,0,.45)">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+      <div style="font-weight:1000" id="authTitle">Login</div>
+      <button id="authClose" class="btn no" style="min-width:auto;padding:8px 10px">✕</button>
+    </div>
+    <div style="margin-top:12px;display:grid;gap:10px">
+      <label style="display:grid;gap:6px">
+        <span style="color:#aab3da;font-weight:800;font-size:12px">Email</span>
+        <input id="authEmail" type="email" placeholder="you@example.com" style="padding:12px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:#fff;outline:none">
+      </label>
+      <label style="display:grid;gap:6px">
+        <span style="color:#aab3da;font-weight:800;font-size:12px">Password</span>
+        <input id="authPass" type="password" placeholder="••••••••" style="padding:12px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:#fff;outline:none">
+      </label>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
+        <button id="authPrimary" class="btn play">Continue</button>
+      </div>
+      <div id="authMsg" style="color:#aab3da;font-size:13px;min-height:18px"></div>
+      <div style="color:rgba(255,255,255,.45);font-size:12px;line-height:1.5">
+        Auth is optional. If not configured, buttons will show a setup message.
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Cookie banner -->
@@ -582,7 +627,7 @@
 
   // ======= Chip rain effect =======
   function spawnChipRain(x, y){
-    const count = 20;
+    const count = 8;
     for(let i=0;i<count;i++){
       const chip = document.createElement("div");
       chip.className = "chip";
@@ -594,15 +639,15 @@
       chip.style.top = startY + "px";
 
       // random color hints
-      const hue = 210 + Math.floor(Math.random()*110);
+      const hue = Math.floor(Math.random()*360);
       chip.style.borderColor = `hsla(${hue}, 90%, 70%, .65)`;
 
       document.body.appendChild(chip);
 
       const driftX = (Math.random()*260 - 130);
-      const fall = 600 + Math.random()*500;
+      const fall = 520 + Math.random()*420;
       const rot = (Math.random()*720 - 360);
-      const dur = 900 + Math.random()*700;
+      const dur = 1600 + Math.random()*1400;
 
       const start = performance.now();
       function step(t){
@@ -626,18 +671,7 @@
     }
   }
 
-  // Also: click anywhere in hero creates subtle effect
-  document.addEventListener("click", (e)=>{
-    // Avoid spam when clicking selects/buttons inside cookie banner
-    const inCookie = e.target && (e.target.closest && e.target.closest("#cookieBanner"));
-    if(inCookie) return;
-    const inNav = e.target && (e.target.closest && e.target.closest("nav"));
-    if(inNav) return;
-    // small burst
-    spawnChipRain(e.clientX, e.clientY);
-  }, {passive:true});
-
-  render();
+    render();
 </script>
 
 </body>

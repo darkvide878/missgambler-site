@@ -17,3 +17,12 @@ Chips Rain Effect
 
 Contact
 - Footer contact is Telegram: @DavideCorleone
+
+
+ICONS
+- Replace assets/missgambler.png with your real logo.
+- Replace assets/needforslots.png with the real NeedforSlots icon.
+
+
+AUTH (optional)
+- Edit index.html and set SUPABASE_URL and SUPABASE_ANON_KEY to enable signup/login modal.
