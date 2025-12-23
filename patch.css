@@ -1,0 +1,6 @@
+
+/* PATCH: Dark select dropdown fix */
+select, option {
+  background-color: #0b1020;
+  color: #eef2ff;
+}
